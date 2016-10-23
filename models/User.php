@@ -40,8 +40,8 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'user_id' => 'User ID',
-            'qualification_id' => 'Qualification ID',
-            'name' => 'Name',
+            'qualification_id' => 'Образование',
+            'name' => 'ФИО',
         ];
     }
 
@@ -53,6 +53,7 @@ class User extends \yii\db\ActiveRecord
     public function getCities()
     {
         return $this->hasMany(City::className(), ['city_id' => 'city_id'])
-            ->viaTable('users_cities', ['user_id' => 'user_id']);
+            ->viaTable('users_cities', ['user_id' => 'user_id'])
+            ->orderBy(['cities.name' => SORT_ASC]);
     }
 }
