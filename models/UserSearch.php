@@ -87,11 +87,11 @@ class UserSearch extends User
             $query->andFilterWhere([
                 'city_id' => $this->city_id,
             ]);
-//            $query->groupBy([
-//               User::tableName().'.user_id',
-//               User::tableName().'.qualification_id',
-//               User::tableName().'.name',
-//            ]);
+            $query->groupBy([
+               User::tableName().'.user_id',
+               User::tableName().'.qualification_id',
+               User::tableName().'.name',
+            ]);
         }
 
         return $dataProvider;
