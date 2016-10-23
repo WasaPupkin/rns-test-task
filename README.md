@@ -1,6 +1,5 @@
 #Тестовое задание.  
 Львов Василий Владимирович <wasamyname@gmail.com>  
-для Постойко Надежда <n.postoiko@runetsoft.ru>
 
 
 ##Install
