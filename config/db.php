@@ -2,16 +2,17 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=localhost;port=5432;dbname=rns-test-task',
+//    'dsn' => 'pgsql:host=localhost;port=5432;dbname=rns-test-task',
+    'dsn' => 'mysql:host=localhost;port=3306;dbname=rns-test-task',
     'username' => 'dev',
     'password' => '123456',
     'charset' => 'utf8',
-    'schemaMap' => [
-        'pgsql'=> [
-            'class'=>'yii\db\pgsql\Schema',
-            'defaultSchema' => 'public' //specify your schema here
-        ]
-    ],
+//    'schemaMap' => [
+//        'pgsql'=> [
+//            'class'=>'yii\db\pgsql\Schema',
+//            'defaultSchema' => 'public' //specify your schema here
+//        ]
+//    ],
     'enableSchemaCache' => true,
 
     // Duration of schema cache.

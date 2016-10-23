@@ -28,6 +28,18 @@ class CreateDataController extends Controller{
         ],
     ];
 
+    private $randomOrder;
+
+    public function init(){
+        parent::init();
+
+        $this->randomOrder = 'RANDOM()';
+
+        if(\Yii::$app->db->driverName == 'mysql'){
+            $this->randomOrder = 'rand()';
+        }
+    }
+
     private function makeRandomName($type = 'fio', $sex = null, $space = ' '){
         if (!$sex) $sex = rand(0, 1) ? 'f' : 'm';
         switch ($type) {
@@ -49,7 +61,7 @@ class CreateDataController extends Controller{
         $query = (new \yii\db\Query())
             ->select('qualification_id')
             ->from(Qualification::tableName())
-            ->orderBy('RANDOM()')
+            ->orderBy($this->randomOrder)
             ->limit(1);
 
         $command = $query->createCommand();
@@ -65,7 +77,7 @@ class CreateDataController extends Controller{
         $query = (new \yii\db\Query())
             ->select('city_id')
             ->from(City::tableName())
-            ->orderBy('RANDOM()')
+            ->orderBy($this->randomOrder)
             ->limit(rand(1, 4));
 
         $command = $query->createCommand();
