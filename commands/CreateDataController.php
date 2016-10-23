@@ -1,9 +1,11 @@
 <?php
 namespace app\commands;
 
+use app\models\City;
 use app\models\Qualification;
 use app\models\User;
 use yii\console\Controller;
+use yii\db\Expression;
 
 /**
  * Генерирует и записывает в БД некий набор данных.
@@ -61,8 +63,8 @@ class CreateDataController extends Controller{
 
     private function getCityIds(){
         $query = (new \yii\db\Query())
-            ->select('qualification_id')
-            ->from(Qualification::tableName())
+            ->select('city_id')
+            ->from(City::tableName())
             ->orderBy('RANDOM()')
             ->limit(rand(1, 4));
 

@@ -1,15 +1,24 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var $dataProvider
+ * @var $usersDataProvider
+ * @var $searchModel
+ * @var $citiesDataProvider
+ * @var $qualificationDataProvider
  */
 
 $this->title = 'Список пользователей';
 
+echo $this->render('_search', [
+    'model' => $searchModel,
+    'citiesDataProvider' => $citiesDataProvider,
+    'qualificationDataProvider' => $qualificationDataProvider,
+]);
+
 echo \yii\grid\GridView::widget([
-    'dataProvider' => $dataProvider,
+    'dataProvider' => $usersDataProvider,
+//    'filterModel' => $searchModel,
     'columns' => [
-        'user_id',
         'name',
         [
             'attribute' => 'qualification.name',

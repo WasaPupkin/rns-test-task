@@ -13,6 +13,8 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+    const USER_TO_CITIES_TABLENAME = 'users_cities';
+
     /**
      * @inheritdoc
      */
@@ -53,7 +55,7 @@ class User extends \yii\db\ActiveRecord
     public function getCities()
     {
         return $this->hasMany(City::className(), ['city_id' => 'city_id'])
-            ->viaTable('users_cities', ['user_id' => 'user_id'])
-            ->orderBy(['cities.name' => SORT_ASC]);
+            ->viaTable(static::USER_TO_CITIES_TABLENAME, ['user_id' => 'user_id'])
+            ->orderBy([City::tableName().'.name' => SORT_ASC]);
     }
 }
