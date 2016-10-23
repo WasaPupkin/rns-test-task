@@ -5,7 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'debug'],
+    'bootstrap' => ['log'],
     'language' => 'ru-RU',
     'components' => [
         'request' => [
@@ -13,27 +13,17 @@ $config = [
             'cookieValidationKey' => '1*#MSDFKA3214',
         ],
         'cache' => [
+            'class' => 'yii\caching\DummyCache',
 //            'class' => 'yii\caching\FileCache',
-            'class' => 'yii\redis\Cache',
-            'redis' => [
-                'hostname' => 'localhost',
-                'port' => 6379,
-                'database' => 4,
-            ]
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+//            'class' => 'yii\redis\Cache',
+//            'redis' => [
+//                'hostname' => 'localhost',
+//                'port' => 6379,
+//                'database' => 4,
+//            ]
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
